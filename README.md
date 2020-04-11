@@ -62,11 +62,11 @@
     
   천명철
   
-    역할 : 팀장, Committer
+    역할 : 팀장
     
-    핵심기여역량 : 
+    핵심기여역량 : 아두이노 설계, 예측모델 설계, 제품디자인 설계
   
-  <img src="https://user-images.githubusercontent.com/21076531/79040822-394a6600-7c26-11ea-9474-803fab61c231.jpg" width="40%" height="30%" title="천명철" alt="RubberDuck"></img>
+  <img src="https://user-images.githubusercontent.com/50235391/79042795-aadde080-7c35-11ea-808c-2b4d18932ca3.jpg" width="110px" height="150px" title="천명철" alt="ME"></img>
     
     
 

@@ -58,7 +58,7 @@
     
     핵심기여역량 : 소스 개발, 아두이노 설계, 시장 분석
     
-    <img src="https://user-images.githubusercontent.com/50190325/79058904-92f67300-7cae-11ea-8831-89778d5b0ab4.jpg" width="120px" height="160px" title="오새암" alt=""></img>
+    <img src="https://user-images.githubusercontent.com/50190325/79058904-92f67300-7cae-11ea-8831-89778d5b0ab4.jpg" width="120" height="160" title="오새암" alt=""></img>
     
   천명철
   

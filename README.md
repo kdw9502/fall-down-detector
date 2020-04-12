@@ -58,7 +58,7 @@
     
     핵심기여역량 : 소스 개발, 아두이노 설계, 시장 분석
     
-    <img src="https://user-images.githubusercontent.com/21076531/79041137-508a5300-7c28-11ea-9024-f9688c5ca3b4.jpg" width="256px" height="256px" title="강동욱" alt="강동욱"></img>
+    <img src="https://user-images.githubusercontent.com/50190325/79058904-92f67300-7cae-11ea-8831-89778d5b0ab4.jpg" width="120px" height="160px" title="오새암" alt=""></img>
     
   천명철
   

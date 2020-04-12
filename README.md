@@ -33,7 +33,7 @@
  
 # 예상 시스템 구성도
 
-  <img src="https://user-images.githubusercontent.com/21076531/79064116-28aaf600-7ce1-11ea-9e75-20edd22228fb.png" width="100%" height="100%" title="" alt="SYSTEM"></img>
+  <img src="https://user-images.githubusercontent.com/21076531/79064923-bab5fd00-7ce7-11ea-99e6-99b443b1ff69.png" width="100%" height="100%" title="" alt="SYSTEM"></img>
 
 
 

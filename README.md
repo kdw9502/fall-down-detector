@@ -54,18 +54,18 @@
     
   오새암
   
-    역할 : 
+    역할 : 아이디어 고안, 소스 개발
     
-    핵심기여역량 : 
+    핵심기여역량 : 소스 개발, 아두이노 설계, 시장 분석
     
-    사진
+   <img src="https://user-images.githubusercontent.com/50190325/79058904-92f67300-7cae-11ea-8831-89778d5b0ab4.jpg" width="120px" height="160px" title="오새암" alt="오새암"></img>
     
   천명철
   
     역할 : 팀장
     
     핵심기여역량 : 아두이노 설계, 예측모델 설계, 제품디자인 설계
-  
+   
   <img src="https://user-images.githubusercontent.com/50235391/79042795-aadde080-7c35-11ea-808c-2b4d18932ca3.jpg" width="110px" height="150px" title="천명철" alt="ME"></img>
     
     

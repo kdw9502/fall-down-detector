@@ -23,17 +23,17 @@
   이 센서들에서는 매 시간 단위로 미세먼지 농도, 온도, 풍속, 습도를 측정하여 실시간 대기정보를 서버에 전송합니다.
   서버는 이 수치들을 현재 시간과 함께 데이터베이스에 저장합니다.
 
-  과거의 날씨, 풍향, 미세먼지 데이터를 사용하여 PYTHON KERAS를 이용해 Convolution Neural Network 모델을 만듭니다.  
-  이 모델은 시간, 온도, 풍속, 습도 등의 대기정보를 토대로 내일의 미세먼지 수치를 예측하도록 만들어집니다.
-  데이터가 일정량 모일 때 마다 다시 학습하여 모델을 갱신합니다.
+  행정안전부 빅데이터분석과의 발표와 충남연구원의 정책지원과제 보고서, 한국교육학술정보원에 공개된 논문을 토대로 풍속, 풍향, 강수량, 중국내 특정 지역 위성 데이터, 일교차를 예측 변수를 선정하였습니다.
 
-  클라이언트가 서버에 현재 시간, 온도, 풍속, 습도의 정보를 보내면, 이를 토대로 CNN 모델은 내일의 미세먼지 농도를 예측하여 클라이언트에 전송해줍니다.
-  추가적으로, WHO에서 정한 미세먼지 등급체계에 따라 위험레벨을 안내 해 주는 기능도 들어갑니다.
+  데이터베이스에 저장된 정보와 공개된 정보들을 크롤링하여 학습에 필요한 데이터를 저장하고, 이 데이터를 사용하여 내일의 미세먼지 수치를 예측하는 시계열 예측 모델을 만듭니다.
+  
+  데이터가 일정량 모일 때 마다 다시 학습하여 모델을 갱신합니다.
+  클라이언트가 서버에 센서가 설치된 지역의 내일 미세먼지 농도를 요청하면, 내일의 미세먼지 농도를 예측하여 클라이언트에 전송해줍니다.
  
  
 # 예상 시스템 구성도
 
-  <img src="https://user-images.githubusercontent.com/21076531/79040721-7feb9080-7c25-11ea-933e-2ef4f221ae83.png" width="100%" height="100%" title="" alt="SYSTEM"></img>
+  <img src="https://user-images.githubusercontent.com/21076531/79064116-28aaf600-7ce1-11ea-9e75-20edd22228fb.png" width="100%" height="100%" title="" alt="SYSTEM"></img>
 
 
 
@@ -74,8 +74,8 @@
 # 개발환경
 
 
-  개발 도구 : Node.js, keras, AWS Lambda, AWS DynamoDB
+  개발 도구 : Node.js, keras, AWS Lambda, AWS DynamoDB, AWS Cloudwatch, Amazon API Gateway
   
   협업 도구 : github, slack, Trello
   
-  개발 방식 : github을 이용한 pull request 방식으로 agile 개발.  Trello를 이용한 프로젝트 관리. AWS Lamda를 이용한 serverless 아키텍쳐 구현. AWS DynamoDB를 이용한 NoSQL DB 사용.
+  개발 방식 : github을 이용한 pull request 방식으로 agile 개발.  Trello를 이용한 프로젝트 관리. AWS Lamda를 이용한 serverless 아키텍쳐 구현. AWS DynamoDB를 이용한 확장 및 편집이 쉬운 NoSQL DB 사용. AWS Cloudwatch를 사용한 주기적 람다 실행. Amazon API Gateway를 이용한 캐싱, RESTful API구현.

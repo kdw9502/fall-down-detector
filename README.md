@@ -39,6 +39,13 @@
 ![cd1](https://user-images.githubusercontent.com/21076531/80339700-2e383c80-889a-11ea-8135-968f9980e00b.png)
 
 
+# 기술 상세
+
+- 아래 이미지같은 데이터를 보유한 COCO dataset과 MPII Human Pose Dataset을 활용하여 다양한 포즈들에 대한 machine learing을 할 계획입니다. Python을 이용할 계획이고, data pre-processing 후에 사람의 다양한 동작들을 분류하고, 그 중 저희가 관심있는 넘어지는 동작에 대해 더 많은 dataset을 학습시킬 계획입니다. 그 결과로 카메라로 인식될 동작에 대해 현재 사용자의 상태가 어떠한지를 판단하고 알릴 수 있게 하려고 합니다. 또한 어플을 사용하면서 추가될 수 있는 넘어지는 동작들을 추가하여 계속 업데이트하여 정확도를 높일 계획입니다. 앞에서 언급한대로 MobliePose-pytorch를 사용할 것입니다.
+
+ <img src="https://user-images.githubusercontent.com/50190325/80907518-ececd480-8d52-11ea-9ba6-f0fa98eb7dc9.png" width="256px" height="256px" title="example_pose" alt="pose"></img>
+ <img src="https://user-images.githubusercontent.com/50190325/80907712-27a33c80-8d54-11ea-85c5-b6895a605c4f.png" width="256px" height="256px" title="example_pose" alt="pose"></img>
+ <img src="https://user-images.githubusercontent.com/50190325/80907714-2a059680-8d54-11ea-949a-f722a704d2ef.png" width="256px" height="256px" title="example_pose" alt="pose"></img>
 
 
 # 기대성과

@@ -47,6 +47,9 @@
  <img src="https://user-images.githubusercontent.com/50190325/80907712-27a33c80-8d54-11ea-85c5-b6895a605c4f.png" width="256px" height="256px" title="example_pose" alt="pose"></img>
  <img src="https://user-images.githubusercontent.com/50190325/80907714-2a059680-8d54-11ea-949a-f722a704d2ef.png" width="256px" height="256px" title="example_pose" alt="pose"></img>
 
+- 카메라 센서로 인물 사진 데이터를 수집 할 수 있지만, 사생활 침해 논란 및 수집기간의 부족으로 수집하지 않도록 하였습니다. 대신 포즈 인식을 통해 인식된 인물의 관절 위치 데이터만을 json형식의 http 통신을 통해 서버에 전송하도록 할 것입니다. 전송된 데이터는 AWS DynamoDB NoSql에 전송된 각 관절 이름을 키로 위치를 값으로 가지는 json 형식으로 저장 될 예정입니다.
+
+- 분석된 결과를 가지고 해당 카메라 위치에 넘어진 사람이 있음을 감지하여 미리 지정된 비상연락망에 연락합니다. 비상 연락망 연락 수단으로는 라인 봇, 텔레그램 봇을 이용한 메신저 알림, SMS API를 이용한 문자 알림, 이메일을 통한 이메일 알림을 모두 고려중입니다. 
 
 # 기대성과
   

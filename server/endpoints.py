@@ -1,17 +1,10 @@
 from alert import send_alert_by_info
+from database_access import find_user_info, set_user_info
 
 
-def register_user(event, context):
+def register_user_info(event, context):
     user_id = event.get("user_id")
-    email = event.get("email", None)
-
-
-def register_email(event, context):
-    pass
-
-
-def register_linebot(event, context):
-    pass
+    set_user_info(user_id, event)
 
 
 def send_alert(event, context):
@@ -19,7 +12,3 @@ def send_alert(event, context):
     user_id = event.get("user_id")
     user_info = find_user_info(user_id)
     send_alert_by_info(user_info)
-
-
-def find_user_info(user_id):
-    return None

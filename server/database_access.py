@@ -84,7 +84,8 @@ def lambda_handler(event, context):
             return respond(e)
     elif operation == "POST":
         info = json.loads(event['body'])
+        print(info)
         try:
-            return respond(None, set_user_info(info['user_id'], info))
+            return respond(set_user_info(info['user_id'], info))
         except Exception as e:
             return respond(e)

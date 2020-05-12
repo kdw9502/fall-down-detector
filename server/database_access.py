@@ -1,3 +1,5 @@
+import decimal
+
 import boto3
 import json
 from botocore.exceptions import ClientError
@@ -55,7 +57,7 @@ def set_user_info(user_id, infos):
 def respond(err, res=None):
     return {
         'statusCode': '400' if err else '200',
-        'body': str(err) if err else json.dumps(res),
+        'body': str(err) if err else json.dumps(res, cls=DecimalEncoder),
         'headers': {
             'Content-Type': 'application/json',
         },
@@ -89,3 +91,13 @@ def lambda_handler(event, context):
             return respond(set_user_info(info['user_id'], info))
         except Exception as e:
             return respond(e)
+
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            if abs(o) % 1 > 0:
+                return float(o)
+            else:
+                return int(o)
+        return super(DecimalEncoder, self).default(o)

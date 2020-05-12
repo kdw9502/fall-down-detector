@@ -1,8 +1,9 @@
 import boto3
+import json
 from botocore.exceptions import ClientError
 
-dynamodb = boto3.resource('dynamodb', region_name='us-west-2', endpoint_url="http://localhost:8000")
-table = dynamodb.Table("table_name")
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+table = dynamodb.Table("user_info")
 
 
 def find_user_info(user_id):
@@ -16,7 +17,7 @@ def find_user_info(user_id):
         item = response['Item']
         print("GetItem succeeded:", item)
 
-    return item
+    return respond(item)
 
 
 def create_user_info(user_info):
@@ -24,6 +25,8 @@ def create_user_info(user_info):
 
 
 def set_user_info(user_id, infos):
+    print(infos)
+
     infos.pop('user_id', None)
 
     update_expression = "set " + ", ".join([f"{key} = :{key}" for key in infos.keys()])
@@ -43,6 +46,45 @@ def set_user_info(user_id, infos):
             print("fail to update or create :", e)
         else:
             print("Insert Item succeeded:", response)
+            return response
     else:
         print("Update Item succeeded:", response)
+        return response
 
+
+def respond(err, res=None):
+    return {
+        'statusCode': '400' if err else '200',
+        'body': str(err) if err else json.dumps(res),
+        'headers': {
+            'Content-Type': 'application/json',
+        },
+    }
+
+
+def lambda_handler(event, context):
+    '''Demonstrates a simple HTTP endpoint using API Gateway. You have full
+    access to the request and response payload, including headers and
+    status code.
+
+    To scan a DynamoDB table, make a GET request with the TableName as a
+    query string parameter. To put, update, or delete an item, make a POST,
+    PUT, or DELETE request respectively, passing in the payload to the
+    DynamoDB API as a JSON body.
+    '''
+    # print("Received event: " + json.dumps(event, indent=2))
+
+    operation = event['httpMethod']
+
+    if operation == "GET":
+        info = event['queryStringParameters']
+        try:
+            return find_user_info(info['user_id'])
+        except Exception as e:
+            return respond(e)
+    elif operation == "POST":
+        info = json.loads(event['body'])
+        try:
+            return set_user_info(info['user_id'], info)
+        except Exception as e:
+            return respond(e)

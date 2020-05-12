@@ -79,12 +79,12 @@ def lambda_handler(event, context):
     if operation == "GET":
         info = event['queryStringParameters']
         try:
-            return find_user_info(info['user_id'])
+            return respond(None, find_user_info(info['user_id']))
         except Exception as e:
             return respond(e)
     elif operation == "POST":
         info = json.loads(event['body'])
         try:
-            return set_user_info(info['user_id'], info)
+            return respond(None, set_user_info(info['user_id'], info))
         except Exception as e:
             return respond(e)

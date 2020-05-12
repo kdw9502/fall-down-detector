@@ -17,7 +17,7 @@ def find_user_info(user_id):
         item = response['Item']
         print("GetItem succeeded:", item)
 
-    return respond(item)
+    return item
 
 
 def create_user_info(user_info):

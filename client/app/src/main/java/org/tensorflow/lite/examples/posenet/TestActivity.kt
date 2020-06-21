@@ -23,7 +23,7 @@ import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import org.tensorflow.lite.examples.posenet.lib.Posenet as Posenet
 

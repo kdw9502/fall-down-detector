@@ -14,7 +14,23 @@
  limitations under the License.
 -->
 <resources>
-  <string name="tfe_pn_app_name" translation_description="Posenet demo app built with Posenet library [CHAR_LIMIT=40]">TFL Posenet</string>
-  <string name="tfe_pn_request_permission" translation_description="Request camera permission [CHAR_LIMIT=40]">This app needs camera permission.</string>
-  <string name="tfe_pn_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="tfe_pn_app_name"
+            translation_description="Posenet demo app built with Posenet library [CHAR_LIMIT=40]">TFL Posenet
+    </string>
+    <string name="tfe_pn_request_permission" translation_description="Request camera permission [CHAR_LIMIT=40]">This
+        app needs camera permission.
+    </string>
+    <string name="tfe_pn_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This
+        device doesn\'t support Camera2 API.
+    </string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="user_header">유저 설정</string>
+    <string name="emergency_header">응급신고</string>
+
+    <!-- Messages Preferences -->
+    <string name="user_id">유저 ID</string>
+    <string name="phone_number">비상연락망 번호</string>
+
 </resources>

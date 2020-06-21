@@ -20,6 +20,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.*
 import android.hardware.camera2.*
@@ -45,7 +46,6 @@ import org.tensorflow.lite.examples.posenet.lib.Posenet
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
-
 
 class PosenetActivity :
   Fragment(),
@@ -205,14 +205,12 @@ class PosenetActivity :
     surfaceView = view.findViewById(R.id.surfaceView)
     surfaceHolder = surfaceView!!.holder
 
-    /*
-    button.setOnClickListener{
-      val httpThread = HttpMgrThread()
-      httpThread.start()
 
-      showToast("문자 전송 완료")
+    button.setOnClickListener{
+      val setting_intent = Intent(this.context, SettingsActivity::class.java)
+      startActivity(setting_intent);
     }
-    */
+
 
     /*
     cambutton.setOnClickListener{
@@ -590,7 +588,7 @@ class PosenetActivity :
       )
 
 
-      val httpThread = HttpMgrThread()
+      val httpThread = HttpMgrThread(this.context)
       httpThread.start()
 
       showToast("문자 전송 완료")

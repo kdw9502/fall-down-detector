@@ -26,7 +26,7 @@
       android:layout_alignParentStart="true"
       android:layout_alignParentTop="true"/>
 
-  <android.support.v7.widget.Toolbar
+  <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
@@ -34,10 +34,23 @@
       android:background="@color/tfe_semi_transparent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tfl2_logo" />
-  </android.support.v7.widget.Toolbar>
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_fall_down" />
+    <TextView
+            android:text="Fall Down Detector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView" android:textSize="24sp"
+            android:textColor="#FFFFFF"/>
+    <Space
+            android:layout_width="10dp"
+            android:layout_height="0dp"/>
+    <Button
+            android:text="SETTING"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button"/>
+  </androidx.appcompat.widget.Toolbar>
+
 
   <!--
   <Button

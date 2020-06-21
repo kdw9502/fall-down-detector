@@ -140,6 +140,9 @@ class PosenetActivity :
   /** Abstract interface to someone holding a display surface.    */
   private var surfaceHolder: SurfaceHolder? = null
 
+  public var pre_x = arrayOf(0, 0, 0, 0, 0, 0, 0)
+  public var pre_y = arrayOf(0, 0, 0, 0, 0, 0, 0)
+
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
 
@@ -202,12 +205,22 @@ class PosenetActivity :
     surfaceView = view.findViewById(R.id.surfaceView)
     surfaceHolder = surfaceView!!.holder
 
+    /*
     button.setOnClickListener{
       val httpThread = HttpMgrThread()
       httpThread.start()
 
       showToast("문자 전송 완료")
     }
+    */
+
+    /*
+    cambutton.setOnClickListener{
+      showToast("카메라 바꿔줘 제발")
+    }
+
+     */
+
   }
 
   override fun onResume() {
@@ -425,10 +438,12 @@ class PosenetActivity :
 
       // Create rotated version for portrait display, 뷰 이미지 조정하는곳.
       val rotateMatrix = Matrix()
-      //후면쓸땐 아래한줄
+      //후면
       //rotateMatrix.postRotate(90.0f)
-
-      rotateMatrix.postRotate(-90.0f)
+      //정면
+      rotateMatrix.postRotate(270.0f)
+      rotateMatrix.postScale(-1.0f, 1.0f)
+      // rotateMatrix.
 
 
       val rotatedBitmap = Bitmap.createBitmap(
@@ -437,11 +452,14 @@ class PosenetActivity :
       )
       image.close()
 
+
+      //프레임 최대로 해놓음일단;
+
       // Process an image for analysis in every 3 frames.
-      frameCounter = (frameCounter + 1) % 3
-      if (frameCounter == 0) {
+      //frameCounter = (frameCounter + 1) % 3
+      //if (frameCounter == 0) {
         processImage(rotatedBitmap)
-      }
+      //}
     }
   }
 
@@ -529,7 +547,7 @@ class PosenetActivity :
       if (keyPoint.score > minConfidence) {
         val position = keyPoint.position
         val adjustedX: Float = position.x.toFloat() * widthRatio + left
-        val adjustedY: Float = position.y.toFloat() * heightRatio + top
+        val adjustedY: Float = position.y.toFloat() * heightRatio + top // 키포인트 좌표 여기서 구할수 있다.
         canvas.drawCircle(adjustedX, adjustedY, circleRadius, paint)
       }
     }
@@ -548,6 +566,47 @@ class PosenetActivity :
         )
       }
     }
+    var x = abs(person.keyPoints[0].score.toFloat())
+    canvas.drawText(
+      "$x",
+      (15.0f * widthRatio),
+      (10.0f * heightRatio + bottom),
+      paint
+    )
+    if((person.keyPoints[0].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[0].score.toFloat() > 0.5 && abs(pre_y[0] - person.keyPoints[0].position.y.toFloat()) > 50)||
+       (person.keyPoints[1].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[1].score.toFloat() > 0.5 && abs(pre_y[1] - person.keyPoints[1].position.y.toFloat()) > 50)||
+       (person.keyPoints[2].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[2].score.toFloat() > 0.5 && abs(pre_y[2] - person.keyPoints[2].position.y.toFloat()) > 50)||
+       (person.keyPoints[3].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[3].score.toFloat() > 0.5 && abs(pre_y[3] - person.keyPoints[3].position.y.toFloat()) > 50)||
+       (person.keyPoints[4].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[4].score.toFloat() > 0.5 && abs(pre_y[4] - person.keyPoints[4].position.y.toFloat()) > 50)||
+       (person.keyPoints[3].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[5].score.toFloat() > 0.5 && abs(pre_y[5] - person.keyPoints[5].position.y.toFloat()) > 50)||
+       (person.keyPoints[3].position.y.toFloat() * heightRatio + top > -70.0f * heightRatio + bottom && person.keyPoints[6].score.toFloat() > 0.5 && abs(pre_y[6] - person.keyPoints[6].position.y.toFloat()) > 50)
+    )
+    {
+      canvas.drawText(
+        "FALL DETECTED!!!",
+        (15.0f * widthRatio),
+        (-90.0f * heightRatio + bottom),
+        paint
+      )
+
+
+      val httpThread = HttpMgrThread()
+      httpThread.start()
+
+      showToast("문자 전송 완료")
+    }
+
+    /*
+    canvas.drawText(
+      "-70 = ***$top//$bottom//$left//$right", // 상하 1080
+
+      (15.0f * widthRatio),
+      (-70.0f * heightRatio + bottom),
+
+      paint
+    )
+    */
+
 
     canvas.drawText(
       "Score: %.2f".format(person.score),
@@ -570,6 +629,12 @@ class PosenetActivity :
 
     // Draw!
     surfaceHolder!!.unlockCanvasAndPost(canvas)
+
+    //저장해놓고 다음 draw때 사용
+    for(i in 0..6){
+      pre_x[i] = person.keyPoints[i].position.x
+      pre_y[i] = person.keyPoints[i].position.y
+    }
   }
 
   /** Process image using Posenet library.   */

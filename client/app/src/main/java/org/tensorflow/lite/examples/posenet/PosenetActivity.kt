@@ -29,10 +29,10 @@ import android.media.ImageReader.OnImageAvailableListener
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray

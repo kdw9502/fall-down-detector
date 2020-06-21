@@ -143,6 +143,8 @@ class PosenetActivity :
   public var pre_x = arrayOf(0, 0, 0, 0, 0, 0, 0)
   public var pre_y = arrayOf(0, 0, 0, 0, 0, 0, 0)
 
+  private var paused = false;
+
   /** [CameraDevice.StateCallback] is called when [CameraDevice] changes its state.   */
   private val stateCallback = object : CameraDevice.StateCallback() {
 
@@ -224,6 +226,9 @@ class PosenetActivity :
   override fun onResume() {
     super.onResume()
     startBackgroundThread()
+    if(paused)
+      openCamera()
+
   }
 
   override fun onStart() {
@@ -233,6 +238,7 @@ class PosenetActivity :
   }
 
   override fun onPause() {
+    paused = true;
     closeCamera()
     stopBackgroundThread()
     super.onPause()

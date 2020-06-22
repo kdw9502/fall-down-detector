@@ -69,6 +69,10 @@
 
 - 스마트시티 시스템에 적용되어 비상환자를 빠르게 발견 할 수 있습니다.
 
+
+# 데모 다운로드
+
+[다운로드](https://github.com/kdw9502/fall-down-detector/blob/master/fall-down-detector.apk)
   
   
 # Teammates
